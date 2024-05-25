@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title>检索页面--mathquest</title>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
+    <link rel="stylesheet" href="C:\Users\34870\Desktop\测试\new-try-css.css">
 <script>  
 $(document).ready(function() {  
     $('#searchForm').on('submit', function(e) {  
@@ -42,16 +43,11 @@ $(document).ready(function() {
     .container {
         max-width: 600px;
         margin: 50px auto;
-        padding: 20px;
+        padding: 18px;
         background-color: #FFFFFF;
         border-radius: 5px;
         box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-    }
-	/*不同检索方式*/
-    .form-group {
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
+        text-align: center;
     }
     label {
         margin-right: 10px;
@@ -60,21 +56,19 @@ $(document).ready(function() {
         flex: 1;
         padding: 8px;
         border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-    select {
-        padding: 8px;
-        border: 1px solid #ccc;
+        width: 330px;
         border-radius: 4px;
     }
 		/*检索按钮的样式*/
     .btn {
-        padding: 10px 20px;
+        padding: 9px 23px;
         background-color: #007bff;
         color: #fff;
         border: none;
         border-radius: 4px;
         cursor: pointer;
+        margin-left: 19px;
+        font-size: 15px;
     }
     .btn:hover {
         background-color: #0056b3;
@@ -96,7 +90,6 @@ $(document).ready(function() {
 	.navbar-brand {  
     font-size: 20px;
     font-weight: bold; 
-    margin: 0;   
 }
 	.navbar-links a {
     color:gray;
@@ -131,113 +124,47 @@ $(document).ready(function() {
 	
 <div class="container">
     <form id="searchForm" action="search.php" method="get">
-        <div class="form-group">
-            <select id="searchType" name="searchType">
-                <option value="name">按中文名称检索</option>
-                <option value="math">按数学公式检索</option>
-                <option value="scope">按学习阶段检索</option>
-				<option value="stage">按知识范围检索</option>
-            </select>
-            <input type="text" id="searchTerm" name="searchTerm" placeholder="请输入搜索词">
+        
+            <input type="text" id="searchTerm" name="searchTerm" placeholder="请输入搜索词……">
             <input type="submit" class="btn" value="检索" name="searchbtn"/>
         </div> 
 	</form>
-	<button id="showKeyboard">辅助键盘</button> 
-	<button id="closeKeyboard">关闭辅助键盘</button>
-	<form>
-		 <div id="keyboardContainer" style="display: none;">  s
-                <!-- 辅助键盘的表格将在这里动态插入 -->  
-            </div>  
-	</form>
-	<!-- 下面用于显示结果的表格，初始为空 -->  
-	<div id="results">  
-    <table id="searchResults">  
-    </table>  
-	</div>
-	<!--反馈链接至邮箱-->
-	 <a href="mailto:2200016644@stu.pku.edu.cn" style="display: block;margin-top: 10px;">没有找到想要的数学符号？点击反馈</a>
-	</div>
-	
-	<!--下面是展开辅助键盘的js代码-->
-	<script>
-	document.getElementById('showKeyboard').addEventListener('click', function() {  
-    // 获取键盘容器元素  
-    var keyboardContainer =document.getElementById('keyboardContainer');   
-    // 清除之前的键盘表格（如果有的话）  
-       keyboardContainer.innerHTML = '';  
-    // 创建一个新的表格元素  
-    var table = document.createElement('table');  
-      
-    // 遍历行和列来创建单元格  
-    for (var i = 0; i < 3; i++) { // 4行  
-        var row = document.createElement('tr');  
-        for (var j = 0; j < 6; j++) { // 6列  
-            var cell = document.createElement('td');  
-          // 将单元格内容添加到输入框中
- 			if (i === 0 && j === 0) {  
-                cell.innerHTML = "&#x2248";}
-			else if (i === 0 && j === 1) {  
-                cell.innerHTML = "&#x2265";} 
-			else if (i === 0 && j === 2) {  
-                cell.innerHTML = "&#x2264";}
-			else if(i === 0 && j === 3) {  
-                cell.innerHTML = "&#x03B1";}
-			else if (i === 0 && j === 4) {  
-                cell.innerHTML = "&#x03B2";} 
-			else if (i === 0 && j === 5) {  
-                cell.innerHTML = "&#x03B3";}
-			else if(i === 1 && j === 0) {  
-                cell.innerHTML = "&#x03B4";}
-			else if (i === 1 && j === 1) {  
-                cell.innerHTML = "&#x03B5";} 
-			else if (i === 1 && j === 2) {  
-                cell.innerHTML = "&#x03B8";}
-			else if(i === 1 && j === 3) {  
-                cell.innerHTML = "&#x03BB";}
-			else if (i === 1 && j === 4) {  
-                cell.innerHTML = "&#x03BC";} 
-			else if (i === 1 && j === 5) {  
-                cell.innerHTML = "&#x03C1";}
-			else if(i === 2 && j === 0) {  
-                cell.innerHTML = "&#x03B8";}
-			else if (i === 2 && j === 1) {  
-                cell.innerHTML = "&#x2202";} 
-			else if (i === 2 && j === 2) {  
-                cell.innerHTML = "&#x2211";}
-			else if(i === 2 && j === 3) {  
-                cell.innerHTML = "&#x221A";}
-			else if (i === 2 && j === 4) {  
-                cell.innerHTML = "&#x221E";} 
-			else if (i === 2 && j === 5) {  
-                cell.innerHTML = "&#x222B";}
-            row.appendChild(cell);  
-        }  
-        table.appendChild(row);  
-    }  
-    // 将表格添加到键盘容器  
-    keyboardContainer.appendChild(table);  
-    // 显示键盘容器  
-    keyboardContainer.style.display = 'block';  
-});
-	//下面为将辅助键盘上的内容输入至检索框的js代码
-	$(document).ready(function() {  
-    $('#keyboardContainer').on('click', 'td', function() {  
-        var value = $(this).html();  
-        $('#searchTerm').val(function(index, currentValue) {  
-            return currentValue + value;  
-        });  
-    });  
-}); 
-	//下面为关闭辅助键盘的js代码
-const closeKeyboardBtn = document.getElementById('closeKeyboard');
-const keyboardContainer = document.getElementById('keyboardContainer');
+<div class="middle">
+    <div class="select-session">
+        <div class="letter">
+            <div class="letter-1">
+                <img src="C:\Users\34870\Downloads\知识库.png">
+                <span>知识分类</span>
+            </div>
+            <div class="table-1">
+                <div class="table-issue">
+                    <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-9" value="9"  /> <label class='option' for='edit-field-fenlei-xueke-tid-9'>几何</label>
+                </div>
+                <div class="table-issue">
+                    <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-10" value="10"  /> <label class='option' for='edit-field-fenlei-xueke-tid-10'>概率论</label>
+                </div>
+                <div class="table-issue">
+                    <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-11" value="11"  /> <label class='option' for='edit-field-fenlei-xueke-tid-11'>线性代数</label>
+                </div>
 
-closeKeyboardBtn.addEventListener('click', () => {
-  keyboardContainer.style.display = 'none';
-});
+            </div>
+        </div>
+    </div>
+    <div class="left-info">
+        <div class="content">
+            
+        </div>
+    </div>
+    <div class="right-info">
+        <div class="content">
+            
+        </div>
+    </div>
+    <div class="bottom-info">
 
-	</script>
-	
+    </div>
+</div>
+
 
 </body>
 </html>

@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>检索页面--mathquest</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
+    <link rel="stylesheet" href="C:\Users\34870\Desktop\测试\new-try-css.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: aliceblue;
+        }
+        /*装检索方式、输入框、检索按钮等的容器*/
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 18px;
+            background-color: #FFFFFF;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        label {
+            margin-right: 10px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            width: 330px;
+            border-radius: 4px;
+        }
+            /*检索按钮的样式*/
+        .btn {
+            padding: 9px 23px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 19px;
+            font-size: 15px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+            /* 导航区样式 */  
+        .navbar {  
+        background-color: skyblue;
+        color: black; 
+        margin: 0;
+        padding-left: 30px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        height:40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    
+    }  
+        .navbar-brand {  
+        font-size: 20px;
+        font-weight: bold; 
+    }
+        .navbar-links a {
+        color:gray;
+        text-decoration: none;
+        padding-right: 10px;
+      }
+        /* 辅助键盘表格样式 */  
+        #keyboardContainer table {  
+        border-collapse: collapse;  
+        width: 100%; /* 可以根据需要调整宽度 */  
+    }  
+      
+        #keyboardContainer table td {  
+        border: 1px solid #ddd;  
+        padding: 8px;  
+        text-align: center;  
+    }
+    </style>
+    </head>
+    
+    <body>
+        <!-- 导航区 -->  
+    <div class="navbar">   
+        <div class="navbar-brand">
+                数学知识检索系统Mathquest  
+        </div> 
+        <div class="header">
+            <p id="showLoginRegister" class="show-login">Login</p>
+          </div>
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>登录</h2>
+              <form id="login-form">
+                <input type="text" style="width: 200px;" placeholder="Username" required><br/>
+                <input type="password" placeholder="Password" required><br/>
+                <button type="submit" style="width: 120px; height: 30px; margin-top: 10px;">Login</button>
+              </form>
+            </div>
+          </div> 
+    </div>
+    <script>
+        const showLoginRegister = document.getElementById('showLoginRegister');
+    const loginModal = document.getElementById('loginModal');
+    const modalClose = document.querySelector('.close');
+    
+    showLoginRegister.addEventListener('click', function() {
+      loginModal.style.display = "block";
+    });
+    
+    modalClose.addEventListener('click', function() {
+      loginModal.style.display = "none";
+    });
+    
+    window.addEventListener('click', function(event) {
+      if (event.target === loginModal) {
+        loginModal.style.display = "none";
+      }
+    });
+      </script>
+        
+    <div class="container">
+        <form id="searchForm" action="search.php" method="get">
+            <input type="text" id="searchTerm" name="searchTerm" placeholder="请输入搜索词……">
+            <input type="submit" class="btn" value="检索" name="searchbtn"/>
+        </div> 
+	</form>
+<div class="middle">
+    <div class="show">
+        <p>共返回n条结果</p>
+    </div>
+    <div class="result-1">
+        <div class="introduction">
+            <div class="picture">
+                <img src="C:\Users\34870\Downloads\知识库.png">
+            </div>
+            <div class="detail">
+                <div class="intro-detail">
+                    <a href="">公式名称</a>
+                    <p>简介内容</p>
+                </div>
+                <div class="session-detail">
+                    <div class="session-1">
+                        <a href="">定义</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <div class="related">
+            <a href="">拉格朗日</a>
+        </div>
+    </div>
+</div>
