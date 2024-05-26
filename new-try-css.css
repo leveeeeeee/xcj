@@ -75,35 +75,75 @@ input[type="password"] {
   border-left: none;
   border-right: none;
 }
+.select-session{
+  height: 260px;
+}
 .select-session img{
   width: 25px;
   height: 28px;
   margin-left: 23px;
 }
-.letter-1,table-1{
-  float: left;
+.table-1 {
+  margin-left: 30%;
+  margin-top: -10%;
 }
-.table-1{
-  margin: 18px auto;
-  margin-left: 160px;
+.table-issue {
+  display: flex;
+  gap: 10px;
+}
+.table-issue div {
+  display: inline-block;
+}
+.letter-2{
+  margin: 30px auto;
+}
+.letter-2 span{
+  display:inline-block;
+  margin-left: 20px;
+  font-size: 15px;
+  font-weight: bold;
+}
+.table-2 {
+  margin-left: 30%;
+  margin-top: -10%;
+}
+.move-right {
+  margin-left: 20px; /* Adjust this value to increase the spacing */
 }
 .left-info{
   float: left;
   position: absolute;
   margin-left: 28px;
-  margin-top: -430px;
+  margin-top: -300px;
   border:4px solid #ddd;
   width: 230px;
-  height: 350px;
+  height: 230px;
+}
+.refresh{
+  margin-top: -36px;
+}
+.refresh a{
+  text-decoration: none;
+  color: #00000077;
+}
+.refresh span{
+  font-size: 15px;
+}
+.refresh img{
+  width: 30px;
+  height: 30px;
+}
+.refresh span,.refresh img{
+  vertical-align: middle;
 }
 .right-info{
   float: right;
   position: absolute;
   margin-left: 77%;
-  margin-top: -430px;
+  margin-top: -300px;
   border:4px solid #ddd;
   width: 230px;
-  height: 350px;
+  height: 230px;
 }
 .bottom-info{
   border:4px solid #ddd;
