@@ -1,0 +1,43 @@
+body {
+    background-color: #f4f4f4; /* 背景颜色为浅灰色 */
+    color: #333; /* 文字颜色为深灰色 */
+    font-family: Arial, sans-serif; /* 使用 Arial 字体或系统默认 sans-serif 字体 */
+    text-align: center; /* 文本水平居中 */
+}
+
+h1 {
+    color: #007bff; /* h1 标题颜色为蓝色 */
+}
+
+nav ul {
+    list-style: none; /* 移除导航列表样式 */
+    padding: 0;
+    margin: 20px 0; /* 上下边距为 20px */
+}
+
+nav li {
+    display: inline; /* 将导航项水平排列 */
+    margin-right: 20px; /* 导航项之间的右边距为 20px */
+}
+
+nav a {
+    text-decoration: none; /* 移除链接的下划线 */
+    color: #007bff; /* 链接颜色为蓝色 */
+    font-weight: bold; /* 链接文本加粗 */
+    font-size: 18px; /* 链接文本字体大小为 18px */
+}
+
+nav a:hover {
+    color: #0056b3; /* 鼠标悬停时链接颜色变为深蓝色 */
+}
+
+.content {
+    max-width: 800px; /* 内容容器最大宽度为 800px */
+    margin: 0 auto; /* 内容容器水平居中 */
+    padding: 20px; /* 内容容器内边距为 20px */
+    background-color: #fff; /* 内容容器背景颜色为白色 */
+    border: 1px solid #ddd; /* 内容容器边框为浅灰色 */
+    border-radius: 5px; /* 内容容器边框圆角为 5px */
+}
+
+/* 添加其他样式，以适应你的需求 */
