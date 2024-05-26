@@ -123,7 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $phone = $_POST["phone"];
 
-    $conn = new mysqli("localhost", "root", "", "library", 3308);
+    $conn = new mysqli("localhost", "root", "", "Math_DB", 3308);
 
     if ($conn->connect_error) {
         die("连接失败：" . $conn->connect_error);

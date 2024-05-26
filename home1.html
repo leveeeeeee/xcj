@@ -1,0 +1,270 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>检索页面--mathSearch</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
+    <link rel="stylesheet" href="new-try-css.css">
+<script>  
+$(document).ready(function() {  
+    $('#searchForm').on('submit', function(e) {  
+        e.preventDefault(); // 阻止表单的默认提交行为  
+  
+        var searchType = $('#searchType').val();  
+        var searchTerm = $('#searchTerm').val();  
+  
+        $.ajax({  
+            url: 'search.php', // 指向 PHP 处理脚本的 URL  
+            type: 'GET', // 请求类型  
+            data: { // 发送的数据  
+                searchType: searchType,  
+                searchTerm: searchTerm  
+            },  
+            dataType: 'html', // 预期服务器返回的数据类型  
+            success: function(response) {  
+                // 处理响应数据，比如将搜索结果插入到 HTML 表格中  
+                $('#searchResults').html(response);  
+            },  
+            error: function(xhr, status, error) {  
+                // 请求失败时的处理  
+                alert('Error: ' + error);  
+            }  
+        });  
+    });  
+});  
+function toggleSubcategoriesVisibility(checkbox) {
+  var subcategories = checkbox.querySelector(".subcategories");
+  if (checkbox.classList.contains("active")) {
+    checkbox.classList.remove("active");
+    subcategories.style.display = "none";
+  } else {
+    checkbox.classList.add("active");
+    subcategories.style.display = "block";
+  }
+}
+
+
+</script> 
+	<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: aliceblue;
+    }
+	/*装检索方式、输入框、检索按钮等的容器*/
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 18px;
+        background-color: #FFFFFF;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    .form-group {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+    }
+    #searchType{
+        height: 35px;
+    }
+    label {
+        margin-right: 10px;
+    }
+    input[type="text"] {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        width: 330px;
+        border-radius: 4px;
+    }
+		/*检索按钮的样式*/
+    .btn {
+        padding: 9px 23px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        /* margin-left: 19px; */
+        font-size: 15px;
+    }
+    .btn:hover {
+        background-color: #0056b3;
+    }
+		/* 导航区样式 */  
+	.navbar {  
+	background-color: skyblue;
+    color: black; 
+	margin: 0;
+	padding-left: 30px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	height:40px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+}  
+	.navbar-brand {  
+    font-size: 20px;
+    font-weight: bold; 
+}
+	.navbar-links a {
+    color:gray;
+    text-decoration: none;
+    padding-right: 10px;
+  }
+</style>
+</head>
+
+<body>
+	<!-- 导航区 -->  
+<div class="navbar">   
+	<div class="navbar-brand">
+            数学知识检索系统Mathquest  
+	</div> 
+	 <div class="navbar-links">
+    <a href="login.html">登录</a>
+    <a href="register.html">注册</a>
+  	</div>
+</div>
+	
+<div class="container">
+    <form id="searchForm" action="search.php" method="get">
+        <div class="form-group">
+            <select id="searchType" name="searchType">
+                <option value="name">按名称检索</option>
+                <option value="math">按公式检索</option>
+                <option value="reason">按定理检索</option>
+				<option value="example">按例题检索</option>
+            </select>
+
+            <input type="text" id="searchTerm" name="searchTerm" placeholder="请输入搜索词……">
+            <input type="submit" class="btn" value="检索" name="searchbtn"/>
+        </div> 
+	</form>
+    </div>
+<div class="middle">
+    <div class="select-session">
+            <div class="letter-1">
+                <span>学习阶段</span>
+            <div class="table-1">
+                <div class="table-issue">
+                    <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-9" value="9" />
+                    <label class='option' for='edit-field-fenlei-xueke-tid-9'>小学</label>
+                    <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-10" value="10" />
+                    <label class='option' for='edit-field-fenlei-xueke-tid-10'>初中</label>
+                    <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-11" value="11" />
+                    <label class='option' for='edit-field-fenlei-xueke-tid-11'>高中</label>
+                    <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-12" value="12" />
+                    <label class='option' for='edit-field-fenlei-xueke-tid-12'>大学</label>
+                </div>
+        </div>
+            </div>
+            <div class="letter-2">
+                <span>知识范围</span>
+            
+            <div class="table-2">
+                <div class="table-issue" data-category="13" onclick="toggleSubcategoriesVisibility(this)">
+                    <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-13" value="13">
+                    <label class='option' for='edit-field-fenlei-xueke-tid-13'>高等代数</label>
+                    <div class="subcategories" style="display: none;">
+                    <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-20" value="20">
+                    <label class='option' for='edit-field-fenlei-xueke-tid-20'>矩阵</label>
+                    <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-21" value="21" />
+                    <label class='option' for='edit-field-fenlei-xueke-tid-21'>行列式</label>
+                    <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-22" value="22" />
+                    <label class='option' for='edit-field-fenlei-xueke-tid-22'>线性空间</label>
+                    </div>
+                </div>
+                <div class="table-issue" data-category="13" onclick="toggleSubcategoriesVisibility(this)">
+                    <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-14" value="14" />
+                    <label class='option' for='edit-field-fenlei-xueke-tid-14'>数学分析</label>
+                    <div class="subcategories" style="display: none;">
+                        <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-23" value="23">
+                        <label class='option' for='edit-field-fenlei-xueke-tid-23'>微分学</label>
+                        <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-24" value="24" />
+                        <label class='option' for='edit-field-fenlei-xueke-tid-24'>积分学</label>
+                        <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-25" value="25" />
+                        <label class='option' for='edit-field-fenlei-xueke-tid-25'>无穷级数</label>
+                        </div>
+                    </div>
+                    <div class="table-issue" data-category="13" onclick="toggleSubcategoriesVisibility(this)">
+                    <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-15" value="15" />
+                    <label class='option' for='edit-field-fenlei-xueke-tid-15'>概率论与统计学初步</label>
+                    <div class="subcategories" style="display: none;">
+                        <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-26" value="26">
+                        <label class='option' for='edit-field-fenlei-xueke-tid-26'>参数估计与假设检验</label>
+                        <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-27" value="27" />
+                        <label class='option' for='edit-field-fenlei-xueke-tid-27'>方差分析与回归分析</label>
+                        <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-28" value="28" />
+                        <label class='option' for='edit-field-fenlei-xueke-tid-28'>统计学概论</label>
+                        </div>
+                </div>
+                <div class="table-issue" data-category="13" onclick="toggleSubcategoriesVisibility(this)">
+                    <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-16" value="16" />
+                    <label class='option' for='edit-field-fenlei-xueke-tid-16'>初等代数</label>
+                    <div class="subcategories" style="display: none;">
+                        <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-29" value="29">
+                        <label class='option' for='edit-field-fenlei-xueke-tid-29'>数系</label>
+                        <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-30" value="30" />
+                        <label class='option' for='edit-field-fenlei-xueke-tid-30'>不等式</label>
+                        <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-31" value="31" />
+                        <label class='option' for='edit-field-fenlei-xueke-tid-31'>排列组合与二项式定理</label>
+                        </div>
+                    </div>
+                    <div class="table-issue" data-category="13" onclick="toggleSubcategoriesVisibility(this)">
+                    <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-17" value="17" />
+                    <label class='option' for='edit-field-fenlei-xueke-tid-17'>平面几何</label>
+                    <div class="subcategories" style="display: none;">
+                        <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-32" value="32">
+                        <label class='option' for='edit-field-fenlei-xueke-tid-32'>三角形</label>
+                        <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-33" value="33" />
+                        <label class='option' for='edit-field-fenlei-xueke-tid-33'>圆</label>
+                        </div>
+                    </div>
+                    <div class="table-issue" data-category="13" onclick="toggleSubcategoriesVisibility(this)">
+                    <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-18" value="18" />
+                    <label class='option' for='edit-field-fenlei-xueke-tid-18'>平面三角</label>
+                    <div class="subcategories" style="display: none;">
+                        <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-34" value="34">
+                        <label class='option' for='edit-field-fenlei-xueke-tid-34'>三角式的变形</label>
+                        <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-35" value="35" />
+                        <label class='option' for='edit-field-fenlei-xueke-tid-35'>解三角式</label>
+                        </div>
+                    </div>
+                    <div class="table-issue" data-category="13" onclick="toggleSubcategoriesVisibility(this)">
+                    <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-19" value="19" />
+                    <label class='option' for='edit-field-fenlei-xueke-tid-19'>立体几何</label>
+                    <div class="subcategories" style="display: none;">
+                        <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-36" value="36">
+                        <label class='option' for='edit-field-fenlei-xueke-tid-36'>立体几何的基础知识</label>
+                        <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-37" value="37" />
+                        <label class='option' for='edit-field-fenlei-xueke-tid-37'>直线与圆</label>
+                        <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-38" value="38" />
+                        <label class='option' for='edit-field-fenlei-xueke-tid-38'>圆锥曲线</label>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="left-info">
+        <div class="content">
+            
+        </div>
+    </div>
+    <div class="right-info">
+        <div class="content">
+            
+        </div>
+    </div>
+    <div class="bottom-info">
+
+    </div>
+</div>
+
+
+</body>
+</html>

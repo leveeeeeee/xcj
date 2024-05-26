@@ -1,342 +1,156 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-        <meta charset="utf-8">
-        <title>检索结果界面--mathquest</title>
-<!--        <link rel="stylesheet" type="text/css" href="results.css">-->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
-<script>  
-$(document).ready(function() {  
-    $('#searchForm').on('submit', function(e) {  
-        e.preventDefault(); // 阻止表单的默认提交行为  
-  
-        var searchType = $('#searchType').val();  
-        var searchTerm = $('#searchTerm').val();  
-  
-        $.ajax({  
-            url: 'search.php', // 指向 PHP 处理脚本的 URL  
-            type: 'GET', // 请求类型  
-            data: { // 发送的数据  
-                searchType: searchType,  
-                searchTerm: searchTerm  
-            },  
-            dataType: 'html', // 预期服务器返回的数据类型  
-            success: function(response) {  
-                // 处理响应数据，比如将搜索结果插入到 HTML 表格中  
-                $('#searchResults').html(response);  
-            },  
-            error: function(xhr, status, error) {  
-                // 请求失败时的处理  
-                alert('Error: ' + error);  
-            }  
-        });  
-    });  
-});  
-
-</script> 
-	<style>
-	 body {
-        font-family: Arial, sans-serif;
-        background-color: aliceblue;
-    }
-.top{
-    text-align: center;
-}
-.head{
-    text-align: center;
-    margin-top: 15px;
-    font-size: 45px;
-}
-
-.results{
-    align-items: center;
-    margin-top: 13px;
-}
-.results a{
-    text-decoration: none;
-}
-.results h1{
-    margin-left: 65%;
-    font-size: large;
-    font-weight: normal;
-}
-.expandable{
-    margin-top: 13px;
-    text-align: center;
-    border: 3px;
-    margin-left:20%;
-    margin-right:20%;
-    border-style:solid;
-    padding: 20px;
-    border-color: rgba(100, 148, 237, 0.502);
-}
-
-.expandable .content {
-    display: none;
-  }
-.expandable.expanded .content {
-    display: block;
-  }
-.bottom{
-    margin-top: 20px;
-    margin: 0,auto;
-    text-align: center;
-}
-.bottom h{
-    font-size: 45px;
-    color: dodgerblue;
-}
-.navbar {  
-	background-color: skyblue;
-    color: black; 
-	margin: 0;
-	padding-left: 30px;
-	padding-bottom: 10px;
-	padding-top: 10px;
-	height:40px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-
-}  
-  
-.navbar-brand {  
-    font-size: 20px;
-    font-weight: bold; 
-    margin: 0;   
-}
-.navbar-links a {
-    color:gray;
-    text-decoration: none;
-    padding-right: 10px;
-  }
-.container {
-        max-width: 600px;
-        margin: 50px auto;
-        padding: 20px;
-        background-color: #FFFFFF;
-        border-radius: 5px;
-        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-    }
-    h1 {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-    .form-group {
-        margin-bottom: 20px;
+	<meta charset="utf-8">
+	<title>检索页面--mathquest</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
+    <link rel="stylesheet" href="new-try-css.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: aliceblue;
+        }
+        /*装检索方式、输入框、检索按钮等的容器*/
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 18px;
+            background-color: #FFFFFF;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        label {
+            margin-right: 10px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            width: 330px;
+            border-radius: 4px;
+        }
+            /*检索按钮的样式*/
+        .btn {
+            padding: 9px 23px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 19px;
+            font-size: 15px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+            /* 导航区样式 */  
+        .navbar {  
+        background-color: skyblue;
+        color: black; 
+        margin: 0;
+        padding-left: 30px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        height:40px;
         display: flex;
+        justify-content: space-between;
         align-items: center;
-    }
- label {
-        margin-right: 10px;
-    }
-    input[type="text"] {
-        flex: 1;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-    select {
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-    .btn {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-    .btn:hover {
-        background-color: #0056b3;
-    }
-#keyboardContainer table {  
-    border-collapse: collapse;  
-    width: 100%; /* 可以根据需要调整宽度 */  
-}  
-  
-#keyboardContainer table td {  
-    border: 1px solid #ddd;  
-    padding: 8px;  
-    text-align: center;  
-    /* 其他样式... */  
-}</style>
-</head>
-
-<body>
-<div class="navbar">   
-	<div class="navbar-brand">
-		数学知识检索系统Mathquest  
-	</div> 
-	<div class="navbar-links">
-   		<a href="#">登录</a>
-   		<a href="#">注册</a>
-        <p>我试试有没有用</p>
-  	</div>
-</div>
-<div class="container">
-	<form id="searchForm" action="search.php" method="get">
-        <div class="form-group">
-            <select id="searchType" name="searchType">
-                <option value="name">按中文名称检索</option>
-                <option value="math">按数学公式检索</option>
-                <option value="scope">按学习阶段检索</option>
-				<option value="stage">按知识范围检索</option>
-            </select>
-            <input type="text" id="searchTerm" name="searchTerm" placeholder="请输入搜索词">
-            <input type="submit" class="btn" value="检索" name="searchbtn"/>
-        </div> 
-	</form>
-	<button id="showKeyboard">辅助键盘</button> 
-	<button id="closeKeyboard">关闭辅助键盘</button>
-	<form>
-		 <div id="keyboardContainer" style="display: none;">  s
-                <!-- 辅助键盘的表格将在这里动态插入 -->  
-         </div>  
-	</form>
-	<!-- 用于显示结果的表格，初始为空 -->  
-<div id="results">  
-    <table id="searchResults">  
-    </table>  
-	</div>
-<a href="mailto:2200016644@stu.pku.edu.cn" style="display: block;margin-top: 10px;">没有找到想要的数学符号？点击反馈</a>
-</div>
-       	<div class="results">
-            <div class="expandable">
-                <div class="header" onclick="toggleContent()" style="font-size: 20px;">公式名称</div>
-                <div class="content">
-                  <a href="">介绍</a>
-                  <p>
-                    这是一大段详细介绍
-                  </p>
-                </div>
-              </div> 
-              <div class="expandable">
-                <div class="header" onclick="toggleContent()" style="font-size: 20px;">公式名称</div>
-                <div class="content">
-                  <a href="">介绍</a>
-                  <p>
-                    这是一大段详细介绍
-                  </p>
-                </div>
-              </div> <div class="expandable">
-                <div class="header" onclick="toggleContent()" style="font-size: 20px;">公式名称</div>
-                <div class="content">
-                  <a href="">介绍</a>
-                  <p>
-                    这是一大段详细介绍
-                  </p>
-                </div>
-              </div> <div class="expandable">
-                <div class="header" onclick="toggleContent()" style="font-size: 20px;">公式名称</div>
-                <div class="content">
-                  <a href="">介绍</a>
-                  <p>
-                    这是一大段详细介绍
-                  </p>
-                </div>
-              </div> <div class="expandable">
-                <div class="header" onclick="toggleContent()" style="font-size: 20px;">公式名称</div>
-                <div class="content">
-                  <a href="">介绍</a>
-                  <p>
-                    这是一大段详细介绍
-                  </p>
-                </div>
-              </div> <div class="expandable">
-                <div class="header" onclick="toggleContent()" style="font-size: 20px;">公式名称</div>
-                <div class="content">
-                  <a href="">介绍</a>
-                  <p>
-                    这是一大段详细介绍
-                  </p>
-                </div>
-              </div> <br/>
-        </div>
-<script>
-	document.getElementById('showKeyboard').addEventListener('click', function() {  
-    // 获取键盘容器元素  
-    var keyboardContainer =document.getElementById('keyboardContainer');   
     
-    // 清除之前的键盘表格（如果有的话）  
-       keyboardContainer.innerHTML = '';  
-    // 创建一个新的表格元素  
-    var table = document.createElement('table');  
-      
-    // 遍历行和列来创建单元格  
-    for (var i = 0; i < 3; i++) { // 4行  
-        var row = document.createElement('tr');  
-        for (var j = 0; j < 6; j++) { // 6列  
-            var cell = document.createElement('td');  
-			
-          // 将单元格内容添加到输入框中
- 			if (i === 0 && j === 0) {  
-                cell.innerHTML = "&#x2248";}
-			else if (i === 0 && j === 1) {  
-                cell.innerHTML = "&#x2265";} 
-			else if (i === 0 && j === 2) {  
-                cell.innerHTML = "&#x2264";}
-			else if(i === 0 && j === 3) {  
-                cell.innerHTML = "&#x03B1";}
-			else if (i === 0 && j === 4) {  
-                cell.innerHTML = "&#x03B2";} 
-			else if (i === 0 && j === 5) {  
-                cell.innerHTML = "&#x03B3";}
-			else if(i === 1 && j === 0) {  
-                cell.innerHTML = "&#x03B4";}
-			else if (i === 1 && j === 1) {  
-                cell.innerHTML = "&#x03B5";} 
-			else if (i === 1 && j === 2) {  
-                cell.innerHTML = "&#x03B8";}
-			else if(i === 1 && j === 3) {  
-                cell.innerHTML = "&#x03BB";}
-			else if (i === 1 && j === 4) {  
-                cell.innerHTML = "&#x03BC";} 
-			else if (i === 1 && j === 5) {  
-                cell.innerHTML = "&#x03C1";}
-			else if(i === 2 && j === 0) {  
-                cell.innerHTML = "&#x03B8";}
-			else if (i === 2 && j === 1) {  
-                cell.innerHTML = "&#x2202";} 
-			else if (i === 2 && j === 2) {  
-                cell.innerHTML = "&#x2211";}
-			else if(i === 2 && j === 3) {  
-                cell.innerHTML = "&#x221A";}
-			else if (i === 2 && j === 4) {  
-                cell.innerHTML = "&#x221E";} 
-			else if (i === 2 && j === 5) {  
-                cell.innerHTML = "&#x222B";}
-
-            row.appendChild(cell);  
-        }  
-        table.appendChild(row);  
     }  
-
-    // 将表格添加到键盘容器  
-    keyboardContainer.appendChild(table);  
+        .navbar-brand {  
+        font-size: 20px;
+        font-weight: bold; 
+    }
+        .navbar-links a {
+        color:gray;
+        text-decoration: none;
+        padding-right: 10px;
+      }
+        /* 辅助键盘表格样式 */  
+        #keyboardContainer table {  
+        border-collapse: collapse;  
+        width: 100%; /* 可以根据需要调整宽度 */  
+    }  
       
-    // 显示键盘容器  
-    keyboardContainer.style.display = 'block';  
-});
-		
-		$(document).ready(function() {  
-    $('#keyboardContainer').on('click', 'td', function() {  
-        var value = $(this).html();  
-        $('#searchTerm').val(function(index, currentValue) {  
-            return currentValue + value;  
-        });  
-    });  
-}); 
-
-const closeKeyboardBtn = document.getElementById('closeKeyboard');
-const keyboardContainer = document.getElementById('keyboardContainer');
-
-closeKeyboardBtn.addEventListener('click', () => {
-  keyboardContainer.style.display = 'none';
-});
-</script>
-     
-    </body>
-</html>
+        #keyboardContainer table td {  
+        border: 1px solid #ddd;  
+        padding: 8px;  
+        text-align: center;  
+    }
+    </style>
+    </head>
+    
+    <body>
+        <!-- 导航区 -->  
+        <div class="navbar">   
+        <div class="navbar-brand">
+                数学知识检索系统Mathquest  
+        </div> 
+         <div class="navbar-links">
+        <a href="login.html">登录</a>
+        <a href="register.html">注册</a>
+          </div>
+        </div>
+    <script>
+        const showLoginRegister = document.getElementById('showLoginRegister');
+    const loginModal = document.getElementById('loginModal');
+    const modalClose = document.querySelector('.close');
+    
+    showLoginRegister.addEventListener('click', function() {
+      loginModal.style.display = "block";
+    });
+    
+    modalClose.addEventListener('click', function() {
+      loginModal.style.display = "none";
+    });
+    
+    window.addEventListener('click', function(event) {
+      if (event.target === loginModal) {
+        loginModal.style.display = "none";
+      }
+    });
+      </script>
+        
+    <div class="container">
+        <form id="searchForm" action="search.php" method="get">
+            <div class="form-group">
+                <select id="searchType" name="searchType">
+                    <option value="name">按名称检索</option>
+                    <option value="math">按公式检索</option>
+                    <option value="reason">按定理检索</option>
+                    <option value="example">按例题检索</option>
+                </select>
+    
+                <input type="text" id="searchTerm" name="searchTerm" placeholder="请输入搜索词……">
+                <input type="submit" class="btn" value="检索" name="searchbtn"/>
+            </div> 
+	</form>
+    </div>
+<div class="middle">
+    <div class="show">
+        <p>共返回n条结果</p>
+    </div>
+    <div class="result-1">
+        <div class="introduction">
+            <div class="picture">
+                <img src="C:\Users\34870\Downloads\知识库.png">
+            </div>
+            <div class="detail">
+                <div class="intro-detail">
+                    <a href="">公式名称</a>
+                    <p>简介内容</p>
+                </div>
+                <div class="session-detail">
+                    <div class="session-1">
+                        <a href="">定义</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <div class="related">
+            <a href="">拉格朗日</a>
+        </div>
+    </div>
+</div>
