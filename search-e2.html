@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>检索页面--mathquest</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
+    <link rel="stylesheet" href="new-try-css.css">
+<script>  
+$(document).ready(function() {  
+    $('#searchForm').on('submit', function(e) {  
+        e.preventDefault(); // 阻止表单的默认提交行为  
+  
+        var searchType = $('#searchType').val();  
+        var searchTerm = $('#searchTerm').val();  
+  
+        $.ajax({  
+            url: 'search.php', // 指向 PHP 处理脚本的 URL  
+            type: 'GET', // 请求类型  
+            data: { // 发送的数据  
+                searchType: searchType,  
+                searchTerm: searchTerm  
+            },  
+            dataType: 'html', // 预期服务器返回的数据类型  
+            success: function(response) {  
+                // 处理响应数据，比如将搜索结果插入到 HTML 表格中  
+                $('#searchResults').html(response);  
+            },  
+            error: function(xhr, status, error) {  
+                // 请求失败时的处理  
+                alert('Error: ' + error);  
+            }  
+        });  
+    });  
+});  
+
+</script> 
+	<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: aliceblue;
+    }
+	/*装检索方式、输入框、检索按钮等的容器*/
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 18px;
+        background-color: #FFFFFF;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    label {
+        margin-right: 10px;
+    }
+    input[type="text"] {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        width: 330px;
+        border-radius: 4px;
+    }
+		/*检索按钮的样式*/
+    .btn {
+        padding: 9px 23px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-left: 19px;
+        font-size: 15px;
+    }
+    .btn:hover {
+        background-color: #0056b3;
+    }
+		/* 导航区样式 */  
+	.navbar {  
+	background-color: skyblue;
+    color: black; 
+	margin: 0;
+	padding-left: 30px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	height:40px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+}  
+	.navbar-brand {  
+    font-size: 20px;
+    font-weight: bold; 
+}
+	.navbar-links a {
+    color:gray;
+    text-decoration: none;
+    padding-right: 10px;
+  }
+	/* 辅助键盘表格样式 */  
+	#keyboardContainer table {  
+    border-collapse: collapse;  
+    width: 100%; /* 可以根据需要调整宽度 */  
+}  
+  
+	#keyboardContainer table td {  
+    border: 1px solid #ddd;  
+    padding: 8px;  
+    text-align: center;  
+}
+</style>
+</head>
+
+<body>
+	<!-- 导航区 -->  
+<div class="navbar">   
+	<div class="navbar-brand">
+            数学知识检索系统MathSearch  
+	</div> 
+	 <div class="navbar-links">
+    <a href="#">登录</a>
+    <a href="#">注册</a>
+  	</div>
+</div>
+	
+<div class="container">
+    <form id="searchForm" action="search.php" method="get">
+            <input type="text" id="searchTerm" name="searchTerm" placeholder="请输入搜索词……">
+            <input type="submit" class="btn" value="检索" name="searchbtn"/>
+        </div> 
+	</form>
+<div class="middle">
+    <div class="select-session">
+        <div class="letter">
+            <div class="letter-1">
+                <span>知识分类</span>
+            </div>
+            <div class="table-1">
+                <div class="table-issue">
+                    <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-9" value="9"  /> <label class='option' for='edit-field-fenlei-xueke-tid-9'>几何</label>
+                </div>
+                <div class="table-issue">
+                    <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-10" value="10"  /> <label class='option' for='edit-field-fenlei-xueke-tid-10'>概率论</label>
+                </div>
+                <div class="table-issue">
+                    <input type="checkbox" name="field_fenlei_xueke_tid[]" id="edit-field-fenlei-xueke-tid-11" value="11"  /> <label class='option' for='edit-field-fenlei-xueke-tid-11'>线性代数</label>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="left-info">
+        <div class="content">
+            
+        </div>
+    </div>
+    <div class="right-info">
+        <div class="content">
+            
+        </div>
+    </div>
+    <div class="bottom-info">
+
+    </div>
+</div>
+
+
+</body>
+</html>
