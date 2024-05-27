@@ -4,21 +4,40 @@
 	<meta charset="utf-8">
 	<title>检索页面--mathSearch</title>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
-    <link rel="stylesheet" href="new-try-css.css">
-<script>   
-function toggleSubcategoriesVisibility(checkbox) {
-  var subcategories = checkbox.querySelector(".subcategories");
-  if (checkbox.classList.contains("active")) {
-    checkbox.classList.remove("active");
-    subcategories.style.display = "none";
-  } else {
-    checkbox.classList.add("active");
-    subcategories.style.display = "block";
-  }
-}
-
-
+    <link rel="stylesheet" href="css.css">
+<script> 
+ function toggleSubcategoriesVisibility(container) {  
+    // 获取容器内的checkbox  
+    var checkbox = container.querySelector('input[type="checkbox"]');  
+    // 获取子分类容器  
+    var subcategories = container.querySelector(".subcategories");  
+  
+    // 如果checkbox被选中，显示子分类  
+    if (checkbox.checked) {  
+        subcategories.style.display = "block";  
+    } else {  
+        // 如果checkbox未被选中，隐藏子分类  
+        subcategories.style.display = "none";  
+    }  
+}  
+  
+// 初始页面加载时，确保所有子分类默认是隐藏的（尽管这已经在style中处理了）  
+// 但如果你想通过JavaScript来确保，可以取消注释以下代码  
+// window.onload = function() {  
+//     var subcategories = document.querySelectorAll(".subcategories");  
+//     subcategories.forEach(function(subcategory) {  
+//         subcategory.style.display = "none";  
+//     });  
+// };  
+  
+// 为所有.table-issue div添加点击事件监听器（可选，如果你已经在HTML中使用了onclick属性）  
+// document.querySelectorAll('.table-issue').forEach(function(container) {  
+//     container.addEventListener('click', function() {  
+//         toggleSubcategoriesVisibility(this);  
+//     });  
+// });
 </script> 
+
 	<style>
     body {
         font-family: Arial, sans-serif;
@@ -89,6 +108,27 @@ function toggleSubcategoriesVisibility(checkbox) {
     text-decoration: none;
     padding-right: 10px;
   }
+  .subcategories {  
+  display: none; /* 默认隐藏所有subcategory */  
+}
+.iframe-container {  
+    display: flex;  
+    justify-content: center; /* 水平居中 */  
+    align-items: center; /* 垂直居中 */  
+    height: 100vh; /* 假设你想要iframe占据全屏高度 */  
+    margin-top: 0;
+}  
+  
+.iframe-container iframe {  
+    /* 设置iframe的宽度和高度，或者根据需要保留为默认 */  
+    width: 90%; /* 示例宽度 */  
+    height: 80%; /* 示例高度 */  
+    border: none; /* 移除边框 */  
+}
+h1 {  
+        text-align: center;  
+        margin-bottom: 0; /* 移除h1标签的默认下边距 */  
+    }  
 </style>
 </head>
 
@@ -98,8 +138,8 @@ function toggleSubcategoriesVisibility(checkbox) {
             数学知识检索系统Mathquest  
 	</div> 
 	 <div class="navbar-links">
-    <a href="login.html">登录</a>
-    <a href="register.html">注册</a>
+    <a href="person.php">我的</a>
+
   	</div>
 </div>
 	
@@ -229,12 +269,14 @@ function toggleSubcategoriesVisibility(checkbox) {
         </div>
     </div>
     <div class="right-info">
-    <div class="refresh" style="margin-left: 70%;"><img src="refresh.png"><span>刷新</span></a></div>
-        <div class="content">
-        </div>
+        <!-- <h1>计算器</h1>
+            <iframe src="https://www.geogebra.org/calculator" width="800" height="600" style="border:0;">
+            </iframe> -->
     </div>
-    <div class="bottom-info">
-
+    <h1>计算器</h1>
+    <div class="iframe-container">
+            <iframe src="https://www.geogebra.org/calculator">
+            </iframe>
     </div>
 </div>
 

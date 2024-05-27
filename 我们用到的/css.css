@@ -1,0 +1,244 @@
+.select-session{
+    margin: 50px auto;
+    border: 3px solid #ddd;
+    width: 600px;
+    height: 400px;
+  }
+  .show-login {
+    cursor: pointer;
+    margin-right: 100px;
+  }
+  .header {
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+  }
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999; /* 将z-index设置为一个较大的值，确保在最上方 */
+  }
+  .modal-content {
+    background-color: #fff;
+    text-align: center;
+    margin: 20% auto;
+    padding: 20px;
+    width: 30%;
+    border-radius: 5px;
+    position: relative;
+    z-index: 10000; /* 确保模态框内容也在最上方 */
+  }
+  .modal-content h2{
+    font-size: larger;
+    font-weight: 130px;
+    margin-top: 3px;
+    margin-left: 13px;
+    display: flex;
+    flex-direction: column;
+  }
+  input[type="text"],
+  input[type="password"] {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 200px;
+    box-sizing: border-box;
+  }
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  
+  .select-session {
+    display: flex; /* 使用flex布局 */
+    flex-direction: column; /* 设置主轴为垂直方向 */
+    justify-content: flex-start; /* 在主轴上顶部对齐 */
+  }
+  
+  .letter-1,
+  .letter-2 {
+    width: 93%; /* 统一宽度 */
+  
+  }
+  
+  .letter-1 {
+    border-bottom: 1px solid #ddd;
+    height: 30px;
+    display: flex; /* 使用flex布局 */
+    align-items: center; /* 在交叉轴上居中对齐 */
+  }
+  
+  .letter-2 {
+    border-bottom: 1px solid #ddd;
+    height: 400px;
+  }
+  
+  .letter-1 span{
+    margin-left: 20px;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .letter-2 span {
+    margin-left: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+  }
+  
+  .table-1,
+  .table-2 {
+    margin-left: 20px;
+  
+  }
+  
+  .table-2 {
+    margin-top: 10px; /* 调整间距使其在letter-1下面 */
+  }
+  .subcategories{
+    margin-left: 30px;
+  }
+  
+  .left-info{
+    float: left;
+    position: absolute;
+    margin-left: 28px;
+    margin-top: -300px;
+    border:4px solid #ddd;
+    width: 230px;
+    height: 230px;
+  }
+  .refresh{
+    margin-top: -36px;
+  }
+  .refresh a{
+    text-decoration: none;
+    color: #00000077;
+  }
+  .refresh span{
+    font-size: 15px;
+  }
+  .refresh img{
+    width: 30px;
+    height: 30px;
+  }
+  .refresh span,.refresh img{
+    vertical-align: middle;
+  }
+  .right-info{
+    float: right;
+    position: absolute;
+    margin-left: 77%;
+    margin-top: -300px;
+    border:4px solid #ddd;
+    width: 230px;
+    height: 230px;
+  }
+  .bottom-info{
+    border:4px solid #ddd;
+    width: 70%;
+    height: 250px;
+    margin: -10px auto;
+  }
+  .result-1{
+    border:2px solid #ddd;
+    width: 60%;
+    height: 160px;
+    margin-left: 5%;
+    margin-top: 10px;
+  }
+  .picture{
+    margin-top: 13px;
+    margin-left: 15px;
+    width: 130px;
+    height: 130px;
+    border: 2px solid #ddd;
+  }
+  .picture img{
+    max-width: 130px;
+    max-height: 130px;
+  }
+  .detail{
+    margin-left: 27%;
+  }
+  .intro-detail{
+    padding-top: 23px;
+  }
+  .intro-detail a{
+    text-decoration: none;
+    font-size: large;
+    font-weight: bold;
+  }
+  .picture,detail{
+    float: left;
+  }
+  .sidebar{
+    float: right;
+    position: absolute;
+    margin-left: 67%;
+    border:2px solid #ddd;
+    width: 26%;
+    margin-top: -320px;
+  }
+  .result-1 .sidebar{
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .a1{
+    margin-top: -28px;
+    margin-left: 10px;
+    font-size: large;
+    font-weight: bold;
+  }
+  .related{
+    border:1px solid #ddd;
+    border-left: none;
+    border-right: none;
+    width: 88%;
+    margin: 13px auto;
+    padding: 3px;
+  }
+  .name{
+    width: 80px;
+  }
+  .related a{
+    text-decoration: none;
+    margin-left: 3%;
+  }
+  .simple-intro, .name{
+    display: inline-block;
+    align-items: center;
+    vertical-align: middle;
+  }
+  .simple-intro{
+    padding: auto;
+    align-items: center;
+  }
+  .session-detail{
+    display: inline-block;
+    text-align: center;
+    margin-bottom: -330px;
+  }
+  .session-1{
+    border:1px solid #ddd ;
+    background-color: rgba(52, 96, 134, 0.423);
+    padding: 2px 3px;
+    height: 26px;
+    width: 50px;
+    border-radius: 7%;
+  }
+  .session-detail a{
+    text-decoration: none;
+    color: rgb(18, 23, 23);
+  }

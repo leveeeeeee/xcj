@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 98vh; /* 可以根据需要调整高度 */
+            background-color: rgb(159, 214, 235);
+        }
+        form {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: absolute;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100px;;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+        <script>
+            window.onload = function() {
+                document.querySelector('form').addEventListener('submit', function(e) {
+                    e.preventDefault(); // 阻止表单默认提交行为
+    
+                    // 获取表单中的数据
+                    var username = document.getElementById('username').value;
+                    var user_id = document.getElementById('user_id').value;
+                    var password = document.getElementById('password').value;
+    
+                    // 创建一个新的 XMLHttpRequest 对象
+                    var xhr = new XMLHttpRequest();
+                    var url = "try.php"; // try.php 是你保存 PHP 代码的文件名
+    
+                    // 设置 POST 请求
+                    xhr.open("POST", url, true);
+                    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    
+                    // 处理响应
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            // 请求成功，处理后端返回的响应
+                            console.log(xhr.responseText); // 这里可以根据后端返回的内容进行相应的操作
+                        }
+                    };
+    
+                    // 发送请求
+                    xhr.send("username=" + username + "&user_id=" + user_id + "&password=" + password);
+                });
+            };
+        </script>
+</head>
+<form >
+    <div>
+        <label for="username">用户名:</label>
+        <input type="text" id="username" name="username" required placeholder="请输入用户名">
+    </div>
+    <div>
+        <label for="user_id">账号:</label>
+        <input type="text" id="user_id" name="user_id" required>
+    </div>
+        <div>
+            <label for="password">密码:</label>
+            <input type="password" id="password" name="password" required placeholder="请输入密码">
+        </div>
+        <div>
+            <input type="submit" value="注册并登录" >
+        </div>
+</form> 
+</body>
+</html>

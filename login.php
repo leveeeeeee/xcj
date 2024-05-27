@@ -40,11 +40,11 @@
         }
     </style>
 </head>
-<form>
-    <form action="/login" method="post">
+<body>
+    <form action="login.php" method="post">
         <div>
-            <label for="username">用户名:</label>
-            <input type="text" id="username" name="username" required placeholder="请输入用户名">
+            <label for="userid">账号:</label>
+            <input type="text" id="userid" name="userid" required placeholder="请输入账号">
         </div>
         <div>
             <label for="password">密码:</label>
@@ -54,6 +54,51 @@
             <input type="submit" value="登录">
         </div>
     <p >还没有账号？<a href="register.html">点击这里注册</a></p>
-</form>
+    </form>
 </body>
 </html>
+<?php  
+// 1. 数据库连接配置  
+$servername = "localhost";  
+$username = "root";  
+$password = "123456";  
+$dbname = "math";  
+  
+// 2. 创建连接  
+$conn = new mysqli($servername, $username, $password, $dbname);  
+  
+// 检查连接  
+if ($conn->connect_error) {  
+    die("连接失败: " . $conn->connect_error);  
+}  
+  
+// 3. 接收用户输入  
+if ($_SERVER["REQUEST_METHOD"] == "POST") {  
+    // 收集值并赋值给变量  
+    $userid = $_POST['userid'];  
+    $password = $_POST['password'];  
+  
+    // 4. 使用预处理语句防止SQL注入  
+    // 注意：这里我们直接比较明文密码，这是不安全的！  
+    $stmt = $conn->prepare("SELECT * FROM user WHERE User_id = ? AND Password = ?");  
+    $stmt->bind_param("ss", $userid, $password);  
+  
+    $stmt->execute();  
+    $result = $stmt->get_result();  
+  
+    if ($result->num_rows > 0) {  
+        // 登录成功，跳转到home2.html  
+        header("Location: home2.html");  
+        exit();  
+    } else {  
+        // 未查询到该用户或密码错误  
+        echo "登录失败，请检查您的账号和密码是否正确。";  
+    }  
+  
+    // 关闭预处理语句  
+    $stmt->close();  
+}  
+  
+// 关闭数据库连接  
+$conn->close();  
+?>
