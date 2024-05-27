@@ -5,33 +5,7 @@
 	<title>检索页面--mathSearch</title>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
     <link rel="stylesheet" href="new-try-css.css">
-<script>  
-$(document).ready(function() {  
-    $('#searchForm').on('submit', function(e) {  
-        e.preventDefault(); // 阻止表单的默认提交行为  
-  
-        var searchType = $('#searchType').val();  
-        var searchTerm = $('#searchTerm').val();  
-  
-        $.ajax({  
-            url: 'search.php', // 指向 PHP 处理脚本的 URL  
-            type: 'GET', // 请求类型  
-            data: { // 发送的数据  
-                searchType: searchType,  
-                searchTerm: searchTerm  
-            },  
-            dataType: 'html', // 预期服务器返回的数据类型  
-            success: function(response) {  
-                // 处理响应数据，比如将搜索结果插入到 HTML 表格中  
-                $('#searchResults').html(response);  
-            },  
-            error: function(xhr, status, error) {  
-                // 请求失败时的处理  
-                alert('Error: ' + error);  
-            }  
-        });  
-    });  
-});  
+<script>   
 function toggleSubcategoriesVisibility(checkbox) {
   var subcategories = checkbox.querySelector(".subcategories");
   if (checkbox.classList.contains("active")) {
@@ -118,7 +92,6 @@ function toggleSubcategoriesVisibility(checkbox) {
 </style>
 </head>
 
-<body>
 	<!-- 导航区 -->  
 <div class="navbar">   
 	<div class="navbar-brand">
@@ -131,7 +104,7 @@ function toggleSubcategoriesVisibility(checkbox) {
 </div>
 	
 <div class="container">
-    <form id="searchForm" action="search.php" method="get">
+    <form id="searchForm">
         <div class="form-group">
             <select id="searchType" name="searchType">
                 <option value="name">按名称检索</option>
@@ -250,14 +223,14 @@ function toggleSubcategoriesVisibility(checkbox) {
         </div>
     </div>
 </div>
-    <div class="left-info">
-        <div class="content">
-            
-        </div>
+<div class="left-info">
+    <div class="refresh" style="margin-left: 70%;"><img src="refresh.png"><span>刷新</span></a></div>
+        <div class="content"> 
+        </div>
     </div>
     <div class="right-info">
+    <div class="refresh" style="margin-left: 70%;"><img src="refresh.png"><span>刷新</span></a></div>
         <div class="content">
-            
         </div>
     </div>
     <div class="bottom-info">

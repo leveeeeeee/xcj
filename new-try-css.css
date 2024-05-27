@@ -122,21 +122,21 @@ input[type="password"] {
 }
 .refresh{
   margin-top: -36px;
-}
-.refresh a{
+  }
+  .refresh a{
   text-decoration: none;
   color: #00000077;
-}
-.refresh span{
-  font-size: 15px;
-}
-.refresh img{
-  width: 30px;
+  }
+  .refresh span{
+font-size: 15px;
+  }
+  .refresh img{
+width: 30px;
   height: 30px;
-}
-.refresh span,.refresh img{
-  vertical-align: middle;
-}
+  }
+  .refresh span,.refresh img{
+vertical-align: middle;
+  }
 .right-info{
   float: right;
   position: absolute;
